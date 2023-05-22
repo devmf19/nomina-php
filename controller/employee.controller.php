@@ -6,7 +6,7 @@ $alert_class = "alert-danger";
 
 function validateFields($data)
 {
-    // Se definen las reglas de que validaran los campos recibidos en un array
+    // Se definen en un array las reglas de que validaran los campos recibidos
     $validationRules = array(
         'id' => array('required' => true, 'type' => 'numeric', 'message' => "El campo ID es obligatorio y debe ser numérico."),
         'name' => array('required' => true, 'type' => 'string', 'message' => "El campo NOMBRES es obligatorio y debe ser una cadena de texto."),

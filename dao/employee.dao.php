@@ -4,7 +4,7 @@ require_once 'C:/xampp/htdocs/nomina-php/model/employee.model.php';
 
 class EmployeeDao extends AbstractDao{
     
-    //Valida si un empleado existe en la base de datos segun si ID
+    //Valida si un empleado existe en la base de datos segun su ID
     public function get($id = 0){
         if($id != 0){
             $this->query = "
