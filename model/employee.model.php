@@ -113,6 +113,3 @@ class Employee extends Person{
         return $this->basic_pay < ($times * Person::$min_pay);
     }
 }
-
-
-?>

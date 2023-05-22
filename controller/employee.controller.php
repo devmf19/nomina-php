@@ -68,7 +68,7 @@ if (isset($_GET) && !empty($_GET)) {
 //Las acciones de guardar, actualizar y eliminar se reciben a traves de POST y se diferencian por un input
 // hidden que se encuentra en los formularios de registro, se llama option
 if (isset($_POST) && !empty($_POST)) { // Se valida que el POST no este vacio
-    
+
     // Obtener los datos de $_POST
     $data = $_POST;
     // Validar los campos
@@ -96,7 +96,7 @@ if (isset($_POST) && !empty($_POST)) { // Se valida que el POST no este vacio
         $alert_class = "alert-success";
         header("Location: ../index.php?message=" . urlencode($message) . "&alert=" . urlencode($alert_class));
         exit;
-    } 
+    }
     //Si el campo option trae el valor de update, significa que se quiere actualizar empleado existente
     else if ($_POST['option'] === 'update') {
         $employee = post_to_object();
@@ -111,7 +111,7 @@ if (isset($_POST) && !empty($_POST)) { // Se valida que el POST no este vacio
         header("Location: ../index.php?message=" . urlencode($message) . "&alert=" . urlencode($alert_class));
         exit;
     }
-} 
+}
 //Si el POST esta vacio o no existe, se retorna al index sin ningun mensaje
 else {
     header("Location: ../index.php");

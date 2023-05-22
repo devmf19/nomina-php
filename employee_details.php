@@ -65,7 +65,7 @@ $employee = $employeeDao->get_by_id($id);
             <div class="card-body">
                 <div class="row justify-content-between">
                     <div class="col-9">
-                    <a href="./index.php" class="btn btn-secondary">Volver</a>
+                        <a href="./index.php" class="btn btn-secondary">Volver</a>
                     </div>
                     <div class="col-3 text-left">
                         <button type="submit" class="btn btn-primary ">Actualizar</button>

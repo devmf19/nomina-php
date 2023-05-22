@@ -1,12 +1,14 @@
-<?php 
+<?php
 require_once 'abstract.dao.php';
 require_once 'C:/xampp/htdocs/nomina-php/model/employee.model.php';
 
-class EmployeeDao extends AbstractDao{
-    
+class EmployeeDao extends AbstractDao
+{
+
     //Valida si un empleado existe en la base de datos segun su ID
-    public function get($id = 0){
-        if($id != 0){
+    public function get($id = 0)
+    {
+        if ($id != 0) {
             $this->query = "
                 SELECT *
                 FROM employees
@@ -14,7 +16,7 @@ class EmployeeDao extends AbstractDao{
             ";
 
             $this->get_results_from_query();
-    
+
             if (!empty($this->rows) && count($this->rows) == 1) {
                 foreach ($this->rows[0] as $field => $value) {
                     $this->$field = $value;
@@ -27,7 +29,8 @@ class EmployeeDao extends AbstractDao{
     }
 
     //Se obtienen todos los datos de un empleado de la base de datos segun su id
-    public function get_by_id($id) {
+    public function get_by_id($id)
+    {
         $this->query = "
             SELECT *
             FROM employees
@@ -37,8 +40,9 @@ class EmployeeDao extends AbstractDao{
         return $this->rows[0];
     }
 
-     //Se obtienen todos empleados registrados en la base de datos
-    public function get_all() {
+    //Se obtienen todos empleados registrados en la base de datos
+    public function get_all()
+    {
         $this->query = "
             SELECT *
             FROM employees
@@ -47,12 +51,13 @@ class EmployeeDao extends AbstractDao{
         return $this->rows;
     }
 
-     //Se registra un nuevo empleado en la base de datos
-    public function set($employee = null) {
+    //Se registra un nuevo empleado en la base de datos
+    public function set($employee = null)
+    {
         if ($employee === null) {
             $employee = new Employee();
         }
-        
+
         if ($employee->getId() != 0) {
             $this->get($employee->getId());
             if (!$this->rows) {
@@ -88,13 +93,14 @@ class EmployeeDao extends AbstractDao{
             }
         }
     }
-    
-     //Se actualiza un empleado de la base de datos
-    public function edit($employee = null) {
+
+    //Se actualiza un empleado de la base de datos
+    public function edit($employee = null)
+    {
         if ($employee === null) {
             $employee = new Employee();
         }
-        
+
         $this->query = "UPDATE employees
                         SET name = '{$employee->getName()}', 
                             lastname = '{$employee->getLastname()}', 
@@ -110,8 +116,9 @@ class EmployeeDao extends AbstractDao{
         $this->execute_single_query();
     }
 
-     //Se elimina un empledo de la base de datos
-    public function delete($id = 0) {
+    //Se elimina un empledo de la base de datos
+    public function delete($id = 0)
+    {
         $this->query = "DELETE FROM employees
                         WHERE id = '{$id}'";
         $this->execute_single_query();
