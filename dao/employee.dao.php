@@ -66,27 +66,17 @@ class EmployeeDao extends AbstractDao
                         id,
                         name,
                         lastname,
-                        hours,
-                        hours_value,
-                        basic_pay, 
-                        subsidy,
-                        source_retention,
-                        social_security,
-                        extra_hours,
-                        net_pay
+                        address,
+                        phone,
+                        dependency
                     )
                     VALUES (
                         '{$employee->getId()}', 
                         '{$employee->getName()}', 
                         '{$employee->getLastname()}', 
-                        '{$employee->getHours()}',
-                        '{$employee->getHours_value()}',
-                        '{$employee->getBasic_pay()}',
-                        '{$employee->getSubsidy()}',
-                        '{$employee->getSource_retention()}',
-                        '{$employee->getSocial_security()}',
-                        '{$employee->getExtra_hours()}',
-                        '{$employee->getNet_pay()}'
+                        '{$employee->getAddress()}',
+                        '{$employee->getPhone()}',
+                        '{$employee->getDependency()}'
                     )
                 ";
                 $this->execute_single_query();
@@ -104,15 +94,10 @@ class EmployeeDao extends AbstractDao
         $this->query = "UPDATE employees
                         SET name = '{$employee->getName()}', 
                             lastname = '{$employee->getLastname()}', 
-                            hours = '{$employee->getHours()}',
-                            hours_value = '{$employee->getHours_value()}',
-                            basic_pay = '{$employee->getBasic_pay()}',
-                            subsidy = '{$employee->getSubsidy()}',
-                            source_retention = '{$employee->getSource_retention()}',
-                            social_security = '{$employee->getSocial_security()}',
-                            extra_hours = '{$employee->getExtra_hours()}',
-                            net_pay = '{$employee->getNet_pay()}'
-                        WHERE id = '{$employee->getId()}'";
+                            address = '{$employee->getAddress()}',
+                            phone = '{$employee->getPhone()}',
+                            dependency = '{$employee->getBasic_pay()}'
+                        WHERE id = '{$employee->getDependency()}'";
         $this->execute_single_query();
     }
 

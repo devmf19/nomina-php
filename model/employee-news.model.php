@@ -1,15 +1,15 @@
 <?php 
 
-class EmployeesNews {
+class EmployeeNews {
     private $employee_id;
-    private $new_id;
+    private $news_id;
     private $value;
     private $date;
 
     function __construct()
     {
         $this->employee_id = 0;
-        $this->new_id = 0;
+        $this->news_id = 0;
         $this->value = 0;
         $this->date = '';
     }
@@ -23,11 +23,11 @@ class EmployeesNews {
 	}
 
 	public function getNew_id(){
-		return $this->new_id;
+		return $this->news_id;
 	}
 
-	public function setNew_id($new_id){
-		$this->new_id = $new_id;
+	public function setNew_id($news_id){
+		$this->news_id = $news_id;
 	}
 
 	public function getValue(){
