@@ -32,9 +32,11 @@ $employees = $employeeDao->get_all(); // se obtienen todos los empleados registr
                         <i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>
                     </a>
                     <?php if ($employee_news->get_by_id($emp['id'], $news_id) == false) { ?>
-                        <a href="./view/news_employee.view.php?employee_id=<?php echo $emp['id']; ?>" type="button" class="btn btn-success btn-sm">
+                        <a href="./view/news_employee.view.php?employee_id=<?php echo $emp['id']; ?>" type="button" class="btn btn-warning btn-sm">
                             <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                         </a>
+                    <?php } else { ?>
+                            <i class="fa-solid fa-circle-check fa-lg" style="color: #00eb91;"></i>
                     <?php } ?>
                 </td>
             </tr>
