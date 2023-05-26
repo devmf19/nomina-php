@@ -31,7 +31,7 @@ $employees = $employeeDao->get_all(); // se obtienen todos los empleados registr
                     <a href="./view/employee_details.php?employee_id=<?php echo $emp['id']; ?>" type="button" class="btn btn-primary btn-sm">
                         <i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>
                     </a>
-                    <?php if ($employee_news->get_by_id($emp['id'], $news_id) != false) { ?>
+                    <?php if ($employee_news->get_by_id($emp['id'], $news_id) == false) { ?>
                         <a href="./view/news_employee.view.php?employee_id=<?php echo $emp['id']; ?>" type="button" class="btn btn-success btn-sm">
                             <i class="fa-solid fa-plus" style="color: #ffffff;"></i>
                         </a>
