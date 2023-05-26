@@ -6,9 +6,9 @@ class EmployeeDao extends AbstractDao
 {
 
     //Valida si un empleado existe en la base de datos segun su ID
-    public function get($id = 0)
+    public function get($id = "")
     {
-        if ($id != 0) {
+        if ($id != "") {
             $this->query = "
                 SELECT *
                 FROM employees
@@ -36,6 +36,7 @@ class EmployeeDao extends AbstractDao
             FROM employees
             WHERE id = '$id'
             ";
+        $this->rows = array();
         $this->get_results_from_query();
         return $this->rows[0];
     }
@@ -47,6 +48,7 @@ class EmployeeDao extends AbstractDao
             SELECT *
             FROM employees
         ";
+        $this->rows = array();
         $this->get_results_from_query();
         return $this->rows;
     }
@@ -82,6 +84,44 @@ class EmployeeDao extends AbstractDao
         }
     }
 
+    //Se registra si el empleado tiene una novedad
+    public function setHasNews($employee_id = "", $news_id = 0)
+    {
+        if ($employee_id != "" && $news_id != 0) {
+            //$this->get($employee_id);
+            //if (!$this->rows) {
+            $this->query = "
+                    INSERT INTO has_news (
+                        id_employee,
+                        id_news
+                    )
+                    VALUES (
+                        '$employee_id', 
+                        '$news_id'
+                    )
+                ";
+            $this->execute_single_query();
+            //}
+        }
+    }
+
+    public function getNews($employee_id = "")
+    {
+        if ($employee_id != "") {
+            $this->query = "
+                SELECT n.*
+                FROM has_news hn
+                INNER JOIN news n ON n.id = hn.id_news
+                WHERE hn.id_employee = '$employee_id'
+            ";
+
+            $this->rows = array();
+            $this->get_results_from_query();
+            return $this->rows[0];
+        }
+        return false;
+    }
+
     //Se actualiza un empleado de la base de datos
     public function edit($employee = null)
     {
@@ -93,8 +133,8 @@ class EmployeeDao extends AbstractDao
                         SET name = '{$employee->getName()}',  
                             address = '{$employee->getAddress()}',
                             phone = '{$employee->getPhone()}',
-                            dependency = '{$employee->getBasic_pay()}'
-                        WHERE id = '{$employee->getDependency()}'";
+                            dependency = '{$employee->getDependency()}'
+                        WHERE id = '{$employee->getId()}'";
         $this->execute_single_query();
     }
 

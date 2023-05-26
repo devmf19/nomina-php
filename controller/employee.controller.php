@@ -1,5 +1,6 @@
 <?php
 require_once '../dao/employee.dao.php';
+require_once '../dao/news.dao.php';
 
 //variable para retornar la clase de bootstrap que debe tener la alerta luego de realizar una accion
 $alert_class = "alert-danger";
@@ -30,6 +31,8 @@ function validateFields($data)
             $errors[] = $rules['message'];
         }
     }
+
+    /*validar si existe la novedad buscando por su id*/
 
     return $errors;
 }
@@ -84,6 +87,10 @@ if (isset($_POST) && !empty($_POST)) { // Se valida que el POST no este vacio
         // Se crea una instancia de EmployeeDao y por su funcion SET se registra el empleado en la base de datos
         $employeeDao = new EmployeeDao();
         $employeeDao->set($employee);
+
+        $news_id = $_POST['news'];
+        $employee_id = $_POST['id'];
+        $employeeDao->setHasNews($employee_id, $news_id);
 
         // Se retorna a la vista index con un mensaje de exito
         $message = "¡Empleado registrado exitosamente!";

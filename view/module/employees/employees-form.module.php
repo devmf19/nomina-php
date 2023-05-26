@@ -1,3 +1,9 @@
+<?php
+require_once './dao/news.dao.php';
+$newsDao = new NewsDao();  //objeto de la clase que realiza acciones en la base de datos
+$news = $newsDao->get_all(); // se obtienen todos los empleados registrados
+?>
+
 <!-- Formulario que toma los datos necesarios del empleado -->
 <form action="./controller/employee.controller.php" method="POST">
     <div class="form-group mt-2">
@@ -21,11 +27,12 @@
         <input type="text" class="form-control mt-1" id="dependency" name="dependency" placeholder="Ingrese su dependencia">
     </div>
     <div class="form-group mt-2">
-        <label for="type">Novedad:</label>
-        <select class="form-control mt-1" id="type" name="type required">
+        <label for="news">Novedad:</label>
+        <select class="form-control mt-1" id="news" name="news" required>
             <option selected>Escoge una opcion</option>
-            <option value="no">No tiene</option>
-            <option value="idNovedad">Descripcion novedad</option>
+            <?php foreach ($news as $new) : ?>
+                <option value="<?php echo $new['id']; ?>"><?php echo $new['description']; ?></option>
+            <?php endforeach; ?>
         </select>
         <input type="hidden" name="option" value="save">
     </div>

@@ -1,16 +1,24 @@
 <?php
 // Se valida la recepcion del id para consultar toda la informacion del empleado
-if (!isset($_GET['id'])) {
+if (!isset($_GET['employee_id'])) {
     header("Location: ./index.php");
     exit;
 }
 require_once 'C:/xampp/htdocs/nomina-php/dao/employee.dao.php';
-$id = $_GET['id'];
+require_once 'C:/xampp/htdocs/nomina-php/dao/news.dao.php';
+require_once 'C:/xampp/htdocs/nomina-php/dao/employees-news.dao.php';
+$id = $_GET['employee_id'];
 $employeeDao = new EmployeeDao();
+$newsDao = new NewsDao();
+$employee_newsDao = new EmployeeNewsDao();
+$employee_news;
 
 // Se obtiene toda la informacion del empleado
 $employee = $employeeDao->get_by_id($id);
-
+$news = $employeeDao->getNews($id);
+if ($news != false) {
+    $employee_news = $employee_newsDao->get_by_id($employee['id'], $news['id']);
+}
 ?>
 
 
@@ -33,12 +41,20 @@ $employee = $employeeDao->get_by_id($id);
                 <h5 class="card-title">Detalles del empleado</h5>
                 <br>
                 <!-- Se muestran todos los datos relacionados con el salario -->
-                <strong>Sueldo basico: </strong>$ <?php echo $employee['basic_pay']; ?> <br>
-                <strong>Subsidio: </strong>$ <?php echo $employee['subsidy']; ?> <br>
-                <strong>Fuente de retencion: </strong>$ <?php echo $employee['source_retention']; ?> <br>
-                <strong>Seguridad social: </strong>$ <?php echo $employee['social_security']; ?> <br>
-                <strong>Horas extras: </strong>$ <?php echo $employee['extra_hours']; ?> <br>
-                <strong>Sueldo neto: $<?php echo $employee['net_pay']; ?></strong>
+                <strong>Id del empleado: </strong><?php echo $employee['id']; ?> <br>
+                <?php if ($news != false) { ?>
+                    <strong>Novedad: </strong><?php echo $news['description']; ?> <br>
+                    <strong>Tipo de novedad: </strong><?php echo $news['type']; ?> <br>
+                    <?php if ($employee_news != false) { ?>
+                        <strong>Valor de novedad: </strong>$ <?php echo $employee_news['value']; ?> <br>
+                        <strong>Fecha de novedad: </strong><?php echo $employee_news['en_date']; ?> <br>
+                    <?php  } else { ?>
+                        <strong>El CLIENTE NO HA COMPLETADO NOVEDAD</strong><br>
+                    <?php  } ?>
+                <?php  } else { ?>
+                    <strong>El CLIENTE NO REGISTRA NOVEDAD</strong><br>
+                <?php  } ?>
+
             </div>
             <div class="card-body">
                 <!-- Formulario que permite actualizar solo los datos necesarios del empleado -->
@@ -48,16 +64,16 @@ $employee = $employeeDao->get_by_id($id);
                         <input type="text" class="form-control mt-1" id="name" name="name" placeholder="Ingrese los nombres" value="<?php echo $employee['name']; ?>">
                     </div>
                     <div class="form-group mt-2">
-                        <label for="lastname">Apellidos:</label>
-                        <input type="text" class="form-control mt-1" id="lastname" name="lastname" placeholder="Ingrese los apellidos" value="<?php echo $employee['lastname']; ?>">
+                        <label for="address">Direccion:</label>
+                        <input type="text" class="form-control mt-1" id="address" name="address" placeholder="Ingrese los apellidos" value="<?php echo $employee['address']; ?>">
                     </div>
                     <div class="form-group mt-2">
-                        <label for="hours">Horas:</label>
-                        <input type="number" class="form-control mt-1" id="hours" name="hours" placeholder="Ingrese las horas" value="<?php echo $employee['hours']; ?>">
+                        <label for="phone">Telefono:</label>
+                        <input type="number" class="form-control mt-1" id="phone" name="phone" placeholder="Ingrese las horas" value="<?php echo $employee['phone']; ?>">
                     </div>
                     <div class="form-group mt-2">
-                        <label for="hours_value">Valor de las horas:</label>
-                        <input type="number" class="form-control mt-1" id="hours_value" name="hours_value" placeholder="Ingrese el valor de las horas" value="<?php echo $employee['hours_value']; ?>">
+                        <label for="dependency">Dependencia:</label>
+                        <input type="text" class="form-control mt-1" id="dependency" name="dependency" placeholder="Ingrese el valor de las horas" value="<?php echo $employee['dependency']; ?>">
                         <input type="hidden" name="option" value="update">
                         <input type="hidden" name="id" value="<?php echo $employee['id']; ?>">
                     </div>
