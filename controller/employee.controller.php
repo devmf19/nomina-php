@@ -10,9 +10,9 @@ function validateFields($data)
     $validationRules = array(
         'id' => array('required' => true, 'type' => 'numeric', 'message' => "El campo ID es obligatorio y debe ser numérico."),
         'name' => array('required' => true, 'type' => 'string', 'message' => "El campo NOMBRES es obligatorio y debe ser una cadena de texto."),
-        'lastname' => array('required' => true, 'type' => 'string', 'message' => "El campo APELLIDOS es obligatorio y debe ser una cadena de texto."),
-        'hours' => array('required' => true, 'type' => 'numeric', 'message' => "El campo HORAS es obligatorio y debe ser numérico."),
-        'hours_value' => array('required' => true, 'type' => 'numeric', 'message' => "El campo VALOR DE LAS HORAS es obligatorio y debe ser numérico."),
+        'address' => array('required' => true, 'type' => 'string', 'message' => "El campo DIRECCION es obligatorio y debe ser una cadena de texto."),
+        'phone' => array('required' => true, 'type' => 'numeric', 'message' => "El campo TELEFONO es obligatorio y debe ser numérico."),
+        'dependency' => array('required' => true, 'type' => 'string', 'message' => "El campo DEPENDENCIA es obligatorio y debe ser una cadena de texto."),
         'option' => array('required' => true, 'type' => 'string', 'message' => "Ocurrio un error. Recargue la pagina e intente nuevamente.")
     );
 
@@ -40,15 +40,9 @@ function post_to_object()
     $employee = new Employee();
     $employee->setId($_POST['id']);
     $employee->setName($_POST['name']);
-    $employee->setLastname($_POST['lastname']);
-    $employee->setHours($_POST['hours']);
-    $employee->setHours_value($_POST['hours_value']);
-    $employee->setBasic_pay();
-    $employee->setSubsidy();
-    $employee->setSource_retention();
-    $employee->setSocial_security();
-    $employee->setExtra_hours();
-    $employee->setNet_pay();
+    $employee->setAddress($_POST['address']);
+    $employee->setPhone($_POST['phone']);
+    $employee->setDependency($_POST['dependency']);
 
     return $employee;
 }

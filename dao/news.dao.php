@@ -53,23 +53,19 @@ class NewsDao extends AbstractDao{
             $new = new News();
         }
 
-        if ($new->getId() != 0) {
-            $this->get($new->getId());
-            if (!$this->rows) {
-                $this->query = "
-                    INSERT INTO news (
-                        id,
-                        description,
-                        type
-                    )
-                    VALUES (
-                        '{$new->getId()}', 
-                        '{$new->geDescription()}', 
-                        '{$new->getType()}'
-                    )
-                ";
-                $this->execute_single_query();
-            }
+        $this->get($new->getId());
+        if (!$this->rows) {
+            $this->query = "
+                INSERT INTO news (
+                    description,
+                    type
+                )
+                VALUES ( 
+                    '{$new->getDescription()}', 
+                    '{$new->getType()}'
+                )
+            ";
+            $this->execute_single_query();
         }
     }
 

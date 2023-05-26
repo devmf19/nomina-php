@@ -4,13 +4,11 @@ class Person
 {
 	private $id;
 	private $name;
-	private $lastname;
 
 	function __construct()
 	{
 		$this->id = "";
 		$this->name = "";
-		$this->lastname = "";
 	}
 
 	public function getId()
@@ -31,15 +29,5 @@ class Person
 	public function setName($name)
 	{
 		$this->name = $name;
-	}
-
-	public function getLastname()
-	{
-		return $this->lastname;
-	}
-
-	public function setLastname($lastname)
-	{
-		$this->lastname = $lastname;
 	}
 }

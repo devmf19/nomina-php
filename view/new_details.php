@@ -22,7 +22,7 @@ $employee = $employeeDao->get_by_id($id);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Detalles de empleado</title>
+    <title>Detalles de novedad</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
@@ -30,10 +30,10 @@ $employee = $employeeDao->get_by_id($id);
     <div class="container">
         <div class="card mt-5" style="width: 80%; margin:auto">
             <div class="card-body">
-                <h5 class="card-title">Detalles del empleado</h5>
+                <h5 class="card-title">Detalles de la novedad</h5>
                 <br>
                 <!-- Se muestran todos los datos relacionados con el salario -->
-                <strong>Sueldo basico: </strong>$ <?php echo $employee['basic_pay']; ?> <br>
+                <strong>Empleados: </strong>$ <?php echo $employee['basic_pay']; ?> <br>
                 <strong>Subsidio: </strong>$ <?php echo $employee['subsidy']; ?> <br>
                 <strong>Fuente de retencion: </strong>$ <?php echo $employee['source_retention']; ?> <br>
                 <strong>Seguridad social: </strong>$ <?php echo $employee['social_security']; ?> <br>

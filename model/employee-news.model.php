@@ -4,14 +4,14 @@ class EmployeeNews {
     private $employee_id;
     private $news_id;
     private $value;
-    private $date;
+    private $en_date;
 
     function __construct()
     {
         $this->employee_id = 0;
         $this->news_id = 0;
         $this->value = 0;
-        $this->date = '';
+        $this->en_date = '';
     }
 
     public function getEmployee_id(){
@@ -38,12 +38,12 @@ class EmployeeNews {
 		$this->value = $value;
 	}
 
-	public function getDate(){
-		return $this->date;
+	public function getEn_date(){
+		return $this->en_date;
 	}
 
-	public function setDate($date){
-		$this->date = $date;
+	public function setEn_date($en_date){
+		$this->en_date = $en_date;
 	}
 }
 

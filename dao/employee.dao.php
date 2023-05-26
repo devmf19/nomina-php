@@ -65,7 +65,6 @@ class EmployeeDao extends AbstractDao
                     INSERT INTO employees (
                         id,
                         name,
-                        lastname,
                         address,
                         phone,
                         dependency
@@ -73,7 +72,6 @@ class EmployeeDao extends AbstractDao
                     VALUES (
                         '{$employee->getId()}', 
                         '{$employee->getName()}', 
-                        '{$employee->getLastname()}', 
                         '{$employee->getAddress()}',
                         '{$employee->getPhone()}',
                         '{$employee->getDependency()}'
@@ -92,8 +90,7 @@ class EmployeeDao extends AbstractDao
         }
 
         $this->query = "UPDATE employees
-                        SET name = '{$employee->getName()}', 
-                            lastname = '{$employee->getLastname()}', 
+                        SET name = '{$employee->getName()}',  
                             address = '{$employee->getAddress()}',
                             phone = '{$employee->getPhone()}',
                             dependency = '{$employee->getBasic_pay()}'

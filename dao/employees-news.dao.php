@@ -71,13 +71,13 @@ class EmployeeNewsDao extends AbstractDao{
                         employee_id,
                         news_id,
                         value,
-                        date
+                        en_date
                     )
                     VALUES (
                         '{$employee_news->getEmployee_id()}', 
                         '{$employee_news->getNews_id()}', 
                         '{$employee_news->geValue()}', 
-                        '{$employee_news->getDate()}'
+                        '{$employee_news->getEn_date()}'
                     )
                 ";
                 $this->execute_single_query();

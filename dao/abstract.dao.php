@@ -6,7 +6,7 @@ abstract class AbstractDao
     private static $db_host = 'localhost';
     private static $db_user = 'root';
     private static $db_pass = 'root';
-    protected $db_name = 'nomina-php';
+    protected $db_name = 'empleados-novedades';
     protected $query;
     protected $rows = array();
     private $conn;
