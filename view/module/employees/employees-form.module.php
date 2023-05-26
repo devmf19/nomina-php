@@ -28,7 +28,7 @@ $news = $newsDao->get_all(); // se obtienen todos los empleados registrados
     </div>
     <div class="form-group mt-2">
         <label for="news">Novedad:</label>
-        <select class="form-control mt-1" id="news" name="news" required>
+        <select class="form-control mt-1" id="news" name="news" require>
             <option selected>Escoge una opcion</option>
             <?php foreach ($news as $new) : ?>
                 <option value="<?php echo $new['id']; ?>"><?php echo $new['description']; ?></option>

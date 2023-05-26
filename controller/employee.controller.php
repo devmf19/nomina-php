@@ -14,6 +14,7 @@ function validateFields($data)
         'address' => array('required' => true, 'type' => 'string', 'message' => "El campo DIRECCION es obligatorio y debe ser una cadena de texto."),
         'phone' => array('required' => true, 'type' => 'numeric', 'message' => "El campo TELEFONO es obligatorio y debe ser numérico."),
         'dependency' => array('required' => true, 'type' => 'string', 'message' => "El campo DEPENDENCIA es obligatorio y debe ser una cadena de texto."),
+        'news' => array('required' => true, 'type' => 'numeric', 'message' => "El campo NOVEDAD es obligatorio, debe seleccionar una."),
         'option' => array('required' => true, 'type' => 'string', 'message' => "Ocurrio un error. Recargue la pagina e intente nuevamente.")
     );
 
