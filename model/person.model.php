@@ -2,9 +2,6 @@
 
 class Person
 {
-	//Salario minimo
-	protected static $min_pay = 250;
-
 	private $id;
 	private $name;
 	private $lastname;
